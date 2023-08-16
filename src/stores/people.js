@@ -1,14 +1,25 @@
-import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 
 const STORE_NAME = 'people'
 
-export const usePeopleStore = defineStore(STORE_NAME, () => {
-  const count = ref(0)
-  const doubleCount = computed(() => count.value * 2)
-  function increment() {
-    count.value++
-  }
+export const usePeopleStore = defineStore(STORE_NAME, {
+  state: () => ({
+    uniquId: 0,
+    people: []
+  }),
 
-  return { count, doubleCount, increment }
+  actions: {
+    addPerson() {
+      this.people.push({
+        id: this.uniquId,
+        name: ''
+      })
+
+      this.uniquId++
+    },
+    
+    deletePerson(index) {
+        this.people.splice(index, 1)
+    }
+  }
 })
