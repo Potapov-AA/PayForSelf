@@ -1,11 +1,14 @@
 import { defineStore } from 'pinia'
 
+import { useFoodsStore } from './foods'
+
 const STORE_NAME = 'people'
 
 export const usePeopleStore = defineStore(STORE_NAME, {
   state: () => ({
     uniquId: 0,
-    people: []
+    people: [],
+    foods: useFoodsStore(),
   }),
 
   actions: {
@@ -19,7 +22,8 @@ export const usePeopleStore = defineStore(STORE_NAME, {
     },
     
     deletePerson(index) {
+        this.foods.updateFoods(this.people[index])
         this.people.splice(index, 1)
-    }
+    },
   }
 })
