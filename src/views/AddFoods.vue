@@ -1,13 +1,40 @@
 <template>
-  <h1>Добавление еды</h1>
+  <v-container>
+    <div v-if="storePeople.people.length > 0" class="d-flex flex-column align-center">
+      <v-btn @click="storeFoods.addFood()"> добавить продукт </v-btn>
+
+      <div v-if="storeFoods.foods.length > 0">
+        <my-food-list></my-food-list>
+      </div>
+      <div v-else>
+        <h1 class="text-uppercase">люди за столом, а еды нет...</h1>
+      </div>
+    </div>
+    <div v-else-if="storePeople.checkName()">
+    asddssa
+    </div>
+    <div v-else>
+      <h1 class="text-uppercase">добавь сначала людей, кто-то же должен платить</h1>
+    </div>
+  </v-container>
 </template>
 
 <script>
-export default {
+import { usePeopleStore } from '@/stores/people'
+import { useFoodsStore } from '@/stores/foods'
+import MyFoodList from '@/components/MyFoodList.vue'
 
+export default {
+  data() {
+    return {
+      storePeople: usePeopleStore(),
+      storeFoods: useFoodsStore()
+    }
+  },
+  components: {
+    'my-food-list': MyFoodList,
+  }
 }
 </script>
 
-<style>
-
-</style>
+<style></style>
