@@ -1,9 +1,16 @@
 <template>
-  <div v-for="(person, index) in storePeople.people" :key="person.id">
-    {{ person.id }} TEST {{ index }}
-    <input type="text" v-model="person.name" id="" placeholder="Введите имя" />
-    <v-btn :key="person.id" @click="storePeople.deletePerson(index)">Удалить</v-btn>
-  </div>
+  <transition-group name="list" tag="div">
+    <div
+      v-for="(person, index) in storePeople.people"
+      :key="person.id"
+      class="border rounded-lg pa-4 mb-2"
+    >
+      <input type="text" v-model="person.name" id="" placeholder="Введите имя" class="border rounded-lg pa-2 mr-3"/>
+      <v-btn icon variant="text" :key="person.id" @click="storePeople.deletePerson(index)">
+        <v-icon> mdi-delete </v-icon>
+      </v-btn>
+    </div>
+  </transition-group>
 </template>
 
 <script>
@@ -18,4 +25,13 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s;
+}
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+</style>
