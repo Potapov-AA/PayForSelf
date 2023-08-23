@@ -1,16 +1,23 @@
 <template>
-  <keep-alive>
-    <div v-for="(food, index) in storeFoods.foods" :key="food.id">
-      {{ food.id }} TEST {{ index }}
-      <input type="text" v-model="food.name" id="" placeholder="Введите название продукта" />
-      <input type="number" v-model="food.cost" id="" placeholder="Введите стоимость" />
-      <v-btn :key="food.id" @click="storeFoods.deleteFood(index)">Удалить</v-btn>
+  <div v-for="(food, index) in storeFoods.foods" :key="food.id">
+    {{ food.id }} TEST {{ index }}
+    <input type="text" v-model="food.name" id="" placeholder="Введите название продукта" />
+    <input type="number" v-model="food.cost" id="" placeholder="Введите стоимость" />
+    <v-btn :key="food.id" @click="storeFoods.deleteFood(index)">Удалить</v-btn>
 
-      <div v-for="person in storePeople.people" :key="person.id">
-        <my-eater :person="person" :index="index"></my-eater>
-      </div>
+    <v-select
+      v-model="food.payerId"
+      :items="storePeople.people"
+      :item-title="'name'"
+      :item-value="'id'"
+      label="Select"
+    >
+    </v-select>
+
+    <div v-for="person in storePeople.people" :key="person.id">
+      <my-eater :person="person" :index="index"></my-eater>
     </div>
-  </keep-alive>
+  </div>
 </template>
 
 <script>

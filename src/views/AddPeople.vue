@@ -1,8 +1,10 @@
 <template>
-  <v-container class="d-flex flex-column align-center">
-    <v-btn @click="storePeople.addPerson()"> добавить человека </v-btn>
-        <my-person-list></my-person-list>
-    <div v-if="storePeople.people.length > 0"></div>
+  <v-container class="d-flex flex-column justify-center align-center">
+    <v-btn @click="storePeople.addPerson()" class="my-5"> добавить человека </v-btn>
+
+    <div v-if="storePeople.people.length > 0">
+      <my-person-list></my-person-list>
+    </div>
     <div v-else>
       <h1 class="text-uppercase">за столом как-то пусто</h1>
     </div>
@@ -20,7 +22,7 @@ export default {
     }
   },
   components: {
-    'my-person-list': MyPersonList,
+    'my-person-list': MyPersonList
   }
 }
 </script>

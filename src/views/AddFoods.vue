@@ -10,9 +10,6 @@
         <h1 class="text-uppercase">люди за столом, а еды нет...</h1>
       </div>
     </div>
-    <div v-else-if="storePeople.checkName()">
-    asddssa
-    </div>
     <div v-else>
       <h1 class="text-uppercase">добавь сначала людей, кто-то же должен платить</h1>
     </div>
