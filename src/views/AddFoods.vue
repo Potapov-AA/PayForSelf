@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <div v-if="storePeople.people.length > 0" class="d-flex flex-column align-center">
-      <v-btn @click="storeFoods.addFood()"> добавить продукт </v-btn>
+      <v-btn @click="storeFoods.addFood()" class="my-5"> добавить продукт </v-btn>
 
       <div v-if="storeFoods.foods.length > 0">
         <my-food-list></my-food-list>
