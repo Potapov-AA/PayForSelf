@@ -1,45 +1,43 @@
 <template>
   <v-container>
     <div class="d-flex justify-space-evenly my-5">
-      <my-icon-result @show="showTableComponent" :tooltipText="'Таблички по продуктам'" :icon="'mdi-table'"></my-icon-result>
-      <my-icon-result @show="showStaticticComponent" :tooltipText="'Статистика'" :icon="'mdi-form-select'"></my-icon-result>
-      <my-icon-result @show="showDebtorComponent" :tooltipText="'Кто кому сколько должен'" :icon="'mdi-cash'"></my-icon-result>
+      <my-icon-result
+        @show="showTableComponent"
+        :tooltipText="'Таблички по продуктам'"
+        :icon="'mdi-table'"
+        :isActive="showTable"
+      ></my-icon-result>
+      <my-icon-result
+        @show="showStaticticComponent"
+        :tooltipText="'Статистика'"
+        :icon="'mdi-form-select'"
+        :isActive="showStatistic"
+      ></my-icon-result>
+      <my-icon-result
+        @show="showDebtorComponent"
+        :tooltipText="'Кто кому сколько должен'"
+        :icon="'mdi-cash'"
+        :isActive="showDebtor"
+      ></my-icon-result>
     </div>
 
-    <div v-for="food in storeFoods.foods" :key="food.id" class="mb-10 border pa-2">
-      <p class="mt-4 mb-4 ml-1 text-h6"><strong>Продукт:</strong> {{ food.name }}</p>
-      <v-table density="compact" height="150px" fixed-header class="border">
-        <thead>
-          <tr>
-            <th><strong>Те кто ел</strong></th>
-            <th><strong>Сколько c меня</strong></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="eater in food.eaters" :key="eater.id">
-            <th>{{ eater.name }}</th>
-            <th>{{ food.cost / food.eaters.length }}</th>
-          </tr>
-        </tbody>
-      </v-table>
+    <div v-if="showTable">
+      <my-table-result></my-table-result>
     </div>
-
-      <div v-if="showTable">
-        Table
-      </div>
-      <div v-else-if="showStatistic">
-        STATISTIC
-      </div>
-      <div v-else-if="showDebtor">
-        DEBTOR
-      </div>
+    <div v-else-if="showStatistic">
+      <my-statistic></my-statistic>
+    </div>
+    <div v-else-if="showDebtor">DEBTOR</div>
   </v-container>
 </template>
 
 <script>
 import { usePeopleStore } from '@/stores/people'
 import { useFoodsStore } from '@/stores/foods'
-import MyIconResult from '../components/MyIconResult.vue'
+import MyIconResult from '@/components/MyIconResult.vue'
+import MyTableResult from '@/components/MyTableResult.vue'
+import MyStatistic from '../components/MyStatistic.vue'
+
 
 
 export default {
@@ -53,7 +51,9 @@ export default {
     }
   },
   components: {
-    'my-icon-result': MyIconResult
+    'my-icon-result': MyIconResult,
+    'my-table-result': MyTableResult,
+    'my-statistic': MyStatistic
   },
   methods: {
     showTableComponent() {
@@ -70,7 +70,7 @@ export default {
       this.showTable = false
       this.showStatistic = false
       this.showDebtor = true
-    },
+    }
   }
 }
 </script>
