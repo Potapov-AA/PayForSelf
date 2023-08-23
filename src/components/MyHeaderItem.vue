@@ -1,9 +1,16 @@
 <template>
   <v-tooltip location="bottom" :text="tooltipText">
     <template v-slot:activator="{ props }">
-      <v-btn variant="outlined" icon v-bind="props" value="nearby" @click="$router.push('/' + link)"> 
+      <router-link :to="'/' + link" class="link" active-class="active">
+      <v-btn
+        variant="outlined"
+        icon
+        v-bind="props"
+        value="nearby"
+      >
         <v-icon :size="size">{{ iconName }}</v-icon>
       </v-btn>
+    </router-link>
     </template>
   </v-tooltip>
 </template>
@@ -19,4 +26,12 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.active{
+  color: red !important;
+}
+
+.link {
+  color: black;
+}
+</style>
