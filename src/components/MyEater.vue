@@ -1,12 +1,14 @@
 <template>
-  <v-checkbox
-    :model-value="isEater"
-    :key="person.id"
-    @change="storeFoods.changeEater(person, index)"
-  >
-    <p v-if="person.name == ''">Мистер инкогнито</p>
-    <p v-else>{{ person.name }}</p>
-  </v-checkbox>
+  <div>
+    <v-checkbox
+      :model-value="isEater"
+      :key="person.id"
+      @change="storeFoods.changeEater(person, index)"
+    >
+      <p v-if="person.name == ''">Мистер инкогнито</p>
+      <p v-else>{{ person.name }}</p>
+    </v-checkbox>
+  </div>
 </template>
 
 <script>
