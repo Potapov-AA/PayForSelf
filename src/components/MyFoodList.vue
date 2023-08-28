@@ -34,7 +34,7 @@
     </v-select>
 
     <div class="d-flex justify-center flex-wrap w-auto">
-      <div class="border ma-2" v-for="person in storePeople.people" :key="person.id">
+      <div class="border ma-1" v-for="person in storePeople.people" :key="person.id">
         <my-eater :person="person" :index="index"></my-eater>
       </div>
     </div>
