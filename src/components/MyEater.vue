@@ -1,12 +1,14 @@
 <template>
-  <div>
+  <div class="box">
     <v-checkbox
       :model-value="isEater"
       :key="person.id"
       @change="storeFoods.changeEater(person, index)"
     >
-      <p v-if="person.name == ''">Мистер инкогнито</p>
-      <p v-else>{{ person.name }}</p>
+      <template v-slot:label>
+        <p v-if="person.name == ''">Мистер инкогнито</p>
+        <p v-else>{{ person.name }}</p>
+      </template>
     </v-checkbox>
   </div>
 </template>
@@ -31,4 +33,8 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.box {
+  width: 200px;
+}
+</style>
