@@ -36,5 +36,6 @@ export default {
 <style>
 .box {
   width: 200px;
+  height: 55px;
 }
 </style>
