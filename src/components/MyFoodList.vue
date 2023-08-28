@@ -33,8 +33,8 @@
     >
     </v-select>
 
-    <div class="d-flex flex-wrap">
-      <div class="border" v-for="person in storePeople.people" :key="person.id">
+    <div class="d-flex justify-center flex-wrap w-auto">
+      <div class="border ma-2" v-for="person in storePeople.people" :key="person.id">
         <my-eater :person="person" :index="index"></my-eater>
       </div>
     </div>
