@@ -2,7 +2,9 @@
   <header class="elevation-10 pa-4">
     <v-row class="mb-2">
       <v-spacer></v-spacer>
-      <v-col align="center"><p class="text-h4"><strong>ДАВАЙ ПОПОЛАМ</strong></p></v-col>
+      <v-col align="center">
+        <p class="text-h4"><strong>ДАВАЙ ПОПОЛАМ</strong></p>
+      </v-col>
       <v-spacer></v-spacer>
     </v-row>
     <v-row class="d-flex justify-center mb-1">
