@@ -1,0 +1,10 @@
+// Анимация для кнопки добавления первого человека и первого блюда
+.btn-plus-animation-enter-active,
+.btn-plus-animation-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.btn-plus-animation-enter-from,
+.btn-plus-animation-leave-to {
+  opacity: 0;
+}
