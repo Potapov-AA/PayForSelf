@@ -1,12 +1,13 @@
 import { defineStore } from 'pinia'
-
+import { usePeopleStore } from './people'
 
 const STORE_NAME = 'foods'
 
 export const useFoodsStore = defineStore(STORE_NAME, {
   state: () => ({
     uniquId: 0,
-    foods: []
+    foods: [],
+    people: usePeopleStore()
   }),
 
   actions: {
@@ -49,6 +50,12 @@ export const useFoodsStore = defineStore(STORE_NAME, {
               food.payerId = 'Кто платит?'
             }
         });
+    },
+
+    clearFoodList(peopleCount) {
+      if(this.foods[0].eaters.length == 0 && peopleCount == 0) {
+        this.foods = []
+      }
     }
   }
 })
