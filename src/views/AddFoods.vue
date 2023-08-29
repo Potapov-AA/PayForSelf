@@ -1,35 +1,56 @@
 <template>
-  <v-container>
-    <div v-if="storePeople.people.length > 0" class="d-flex flex-column align-center">
-      <v-btn @click="storeFoods.addFood()" prepend-icon="mdi-food-fork-drink" append-icon="mdi-food-fork-drink" class="my-5"> добавить продукт </v-btn>
-
-      <div v-if="storeFoods.foods.length > 0">
+  <v-container
+    v-if="showWarringMessage()"
+    class="d-flex flex-column align-center justify-center h-100"
+  >
+    <my-warring :warringText="warringText"></my-warring>
+  </v-container>
+  <transition v-else name="btn-plus-animation" mode="out-in">
+    <v-container
+      v-if="storeFoods.foods.length == 0"
+      class="d-flex flex-column align-center justify-center h-100"
+    >
+      <my-add-first-item-btn :addItemFunction="storeFoods.addFood"></my-add-first-item-btn>
+    </v-container>
+    <v-container v-else>
+      <div v-if="storePeople.people.length > 0" class="d-flex flex-column align-center">
+        <v-btn
+          @click="storeFoods.addFood()"
+          prepend-icon="mdi-food-fork-drink"
+          append-icon="mdi-food-fork-drink"
+          class="my-5"
+        >
+          добавить продукт
+        </v-btn>
         <my-food-list></my-food-list>
       </div>
-      <div v-else>
-        <h1 class="text-uppercase">люди за столом, а еды нет...</h1>
-      </div>
-    </div>
-    <div v-else>
-      <h1 class="text-uppercase">добавь сначала людей, кто-то же должен платить</h1>
-    </div>
-  </v-container>
+    </v-container>
+  </transition>
 </template>
 
 <script>
 import { usePeopleStore } from '@/stores/people'
 import { useFoodsStore } from '@/stores/foods'
+
 import MyFoodList from '@/components/MyFoodList.vue'
+import MyWarring from '@/components/MyWarring.vue'
+import MyAddFirstItemBtn from '@/components/MyAddFirstItemBtn.vue'
+
+import MyMixinValidate from '@/components/MyMixinValidate.vue'
+
 
 export default {
+  mixins: [MyMixinValidate],
   data() {
     return {
       storePeople: usePeopleStore(),
-      storeFoods: useFoodsStore()
+      storeFoods: useFoodsStore(),
     }
   },
   components: {
     'my-food-list': MyFoodList,
+    'my-warring': MyWarring,
+    'my-add-first-item-btn': MyAddFirstItemBtn
   }
 }
 </script>
