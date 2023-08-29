@@ -8,7 +8,7 @@ export const usePeopleStore = defineStore(STORE_NAME, {
   state: () => ({
     uniquId: 0,
     people: [],
-    foods: useFoodsStore(),
+    foods: useFoodsStore()
   }),
 
   actions: {
@@ -20,10 +20,11 @@ export const usePeopleStore = defineStore(STORE_NAME, {
 
       this.uniquId++
     },
-    
+
     deletePerson(index) {
-        this.foods.updateFoods(this.people[index])
-        this.people.splice(index, 1)
-    },
+      this.foods.updateFoods(this.people[index])
+      this.people.splice(index, 1)
+      this.foods.clearFoodList(this.people.length)
+    }
   }
 })
