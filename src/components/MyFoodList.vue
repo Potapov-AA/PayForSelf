@@ -5,7 +5,7 @@
     class="border rounded-lg pa-4 mb-10"
   >
     <div class="d-flex justify-space-between">
-      <v-text-field v-model="food.name" class="w-250" label="Название продукта" variant="outlined">
+      <v-text-field v-model="food.name" class="w-300" label="Название продукта" variant="outlined">
       </v-text-field>
 
       <v-text-field
@@ -51,7 +51,7 @@
 import { usePeopleStore } from '@/stores/people'
 import { useFoodsStore } from '@/stores/foods'
 
-import MyEater from './MyEater.vue'
+import MyEater from '@/components/MyEater.vue'
 
 export default {
   data() {
@@ -66,8 +66,4 @@ export default {
 }
 </script>
 
-<style>
-.w-250 {
-  width: 100px;
-}
-</style>
+<style></style>
