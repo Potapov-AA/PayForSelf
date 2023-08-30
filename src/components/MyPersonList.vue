@@ -26,17 +26,4 @@ export default {
 }
 </script>
 
-<style>
-.list-enter-active,
-.list-leave-active {
-  transition: all 0.5s;
-}
-.list-leave-to {
-  opacity: 0;
-  transform: translateX(30px);
-}
-
-.w-200 {
-  width: 300px;
-}
-</style>
+<style></style>
