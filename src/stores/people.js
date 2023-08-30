@@ -25,6 +25,16 @@ export const usePeopleStore = defineStore(STORE_NAME, {
       this.foods.updateFoods(this.people[index])
       this.people.splice(index, 1)
       this.foods.clearFoodList(this.people.length)
+    },
+
+    findPerson(id) {
+      var person = NaN
+
+      this.people.forEach(p => {
+        if (p.id == id) person = p
+      });
+
+      return person
     }
   }
 })
