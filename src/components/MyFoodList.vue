@@ -68,6 +68,6 @@ export default {
 
 <style>
 .w-250 {
-  width: 250px;
+  width: 100px;
 }
 </style>
