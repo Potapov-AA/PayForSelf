@@ -1,35 +1,35 @@
 # payforself
 
-This template should help get you started developing with Vue 3 in Vite.
+Приложение для разделения счета в кафе.
 
-## Recommended IDE Setup
+## Используемый стек
+1. Vue3
+2. Vite
+3. Pinia
+4. Vue-router
+5. Vuetify
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Рекомендуемые IDE настройки 
 
-## Customize configuration
+[VSCode](https://code.visualstudio.com/)
+[JavaScript (ES6) code snippets](https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets)
+[Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+[Vue Language Features (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
+## Настройка проекта
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### Компиляция и Hot-Reload для разработки
 
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+### Компиляция и минификация для продакшена
 
 ```sh
 npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
 ```
