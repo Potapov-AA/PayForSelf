@@ -11,10 +11,10 @@
 
 ## Рекомендуемые IDE настройки 
 
-[VSCode](https://code.visualstudio.com/)
-[JavaScript (ES6) code snippets](https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets)
-[Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-[Vue Language Features (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+1. [VSCode](https://code.visualstudio.com/)
+2. [JavaScript (ES6) code snippets](https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets)
+3. [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+4. [Vue Language Features (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
 
 ## Настройка проекта
 
