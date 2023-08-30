@@ -1,5 +1,5 @@
 <template>
-  <div v-for="(payer, payerId) in fillPayersArray()" :key="payer">
+  <div v-for="(payer, payerId) in fillPayersArray" :key="payer">
     <v-table v-if="checkZeroDebtors(payer)" density="compact" class=" border rounded-lg pa-2 mb-10">
       <thead>
         <tr>
@@ -42,10 +42,9 @@ export default {
       payers: {}
     }
   },
-  methods: {
+  computed: {
     // Заполняет массив платильщиков-должников
-    fillPayersArray() {
-      // формирование массива платильщиков
+    fillPayersArray: function() {
       var payersArray = []
       this.storeFoods.foods.forEach((food) => {
         if (!(food.payerId in payersArray)) {
@@ -99,8 +98,9 @@ export default {
       }
 
       return this.payers
-    },
-
+    }
+  },
+  methods: {
     // Проверка на наличие должников с нудевой суммой
     checkZeroDebtors(payer) {
       let hasDebtor = false;
