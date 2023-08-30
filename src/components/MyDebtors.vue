@@ -1,6 +1,6 @@
 <template>
   <div v-for="(payer, payerId) in fillPayersArray()" :key="payer">
-    <v-table v-if="checkDebtors(payer)" density="compact" class=" border rounded-lg pa-2 mb-10">
+    <v-table v-if="checkZeroDebtors(payer)" density="compact" class=" border rounded-lg pa-2 mb-10">
       <thead>
         <tr>
           <th colspan="2">
@@ -43,7 +43,9 @@ export default {
     }
   },
   methods: {
+    // Заполняет массив платильщиков-должников
     fillPayersArray() {
+      // формирование массива платильщиков
       var payersArray = []
       this.storeFoods.foods.forEach((food) => {
         if (!(food.payerId in payersArray)) {
@@ -51,12 +53,14 @@ export default {
         }
       })
 
+      // заполнение payers дефолтными значениями
       payersArray.forEach((payer) => {
         this.payers[payer] = {
           debtors: {}
         }
       })
 
+      // заполнение списка должников для каждого платильщика
       this.storeFoods.foods.forEach((food) => {
         food.eaters.forEach((eater) => {
           if (eater.id != food.payerId) {
@@ -73,6 +77,7 @@ export default {
         })
       })
 
+      // перерасчет сумм должников, для случаев раздельного счета
       for(var k1 in this.payers) {
         for(var k2 in this.payers) {
           if(k1 != k2) {
@@ -96,7 +101,8 @@ export default {
       return this.payers
     },
 
-    checkDebtors(payer) {
+    // Проверка на наличие должников с нудевой суммой
+    checkZeroDebtors(payer) {
       let hasDebtor = false;
 
       for(let debtor in payer.debtors) {
