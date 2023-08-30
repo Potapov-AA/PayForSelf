@@ -71,6 +71,7 @@ export default {
     'my-debtors': MyDebtors
   },
   methods: {
+    // Функции для изменения отображаемого окна статистики
     showTableComponent() {
       this.showTable = true
       this.showStatistic = false
@@ -86,6 +87,8 @@ export default {
       this.showStatistic = false
       this.showDebtor = true
     },
+
+    // Проверка на корректное заполнение полей добавления еды
     checkFoodListFields() {
       var show = false
 
