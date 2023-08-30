@@ -95,7 +95,7 @@ export default {
             show = true
           } else {
             this.storeFoods.foods.forEach((food) => {
-              if (food.name == '' || food.cost == '' || food.payerId == 'Кто платит?') {
+              if (food.name == '' || food.cost == '' || food.payerId == '---') {
                 this.warringMessage = 'Для отображения результатов необходимо заполнить все поля у каждого блюда.'
                 show = true
               } else if (isNaN(Number(food.cost)) || food.cost <= 0) {
