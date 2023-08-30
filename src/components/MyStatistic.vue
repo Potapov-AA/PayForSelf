@@ -44,6 +44,7 @@ export default {
     }
   },
   methods: {
+    // Расчет финальной суммы для каждой персоны и каждого продукта
     calculateFinalSum() {
       const finalResult = {}
 
@@ -65,6 +66,7 @@ export default {
       return finalResult
     },
 
+    // Поиск того, кто потратил больше всех
     maxSum() {
       var richEater = []
       var max = 0
@@ -85,6 +87,7 @@ export default {
       return richEater
     },
 
+    // Поиск того, кто съел больше всех
     maxEat() {
       var maxEaters = []
       var max = 0
@@ -125,7 +128,4 @@ export default {
 </script>
 
 <style>
-.center {
-  text-align: center !important;
-}
 </style>
