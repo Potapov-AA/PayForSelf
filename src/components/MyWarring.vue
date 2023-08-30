@@ -1,5 +1,5 @@
 <template>
-  <div class="h-auto w-auto pa-5 rounded-lg warring">
+  <div class="h-auto w-auto pa-5 rounded-lg warring-message-border">
     <p align="center" class="text-h5"><strong>ПРЕДУПРЕЖДЕНИЕ</strong></p>
     <p align="center" class="mt-5">{{ warringText }}</p>
   </div>
@@ -14,7 +14,4 @@ export default {
 </script>
 
 <style>
-.warring {
-  border: black dashed 2px;
-}
 </style>
