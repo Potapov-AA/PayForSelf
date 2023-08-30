@@ -8,3 +8,30 @@
 .btn-plus-animation-leave-to {
   opacity: 0;
 }
+
+// Анимация удаления персон из списка
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s;
+}
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+.w-300 {
+  width: 300px;
+}
+
+.warring-message-border {
+  border: black dashed 2px;
+}
+
+.activeResultsPage {
+  border: 1px solid black !important;
+  color:  black;
+}
+
+.center {
+  text-align: center !important;
+}
