@@ -12,6 +12,7 @@ export const usePeopleStore = defineStore(STORE_NAME, {
   }),
 
   actions: {
+    // Добавление элемента в people
     addPerson() {
       this.people.push({
         id: this.uniquId,
@@ -21,12 +22,14 @@ export const usePeopleStore = defineStore(STORE_NAME, {
       this.uniquId++
     },
 
+    // Удаление элемента из people
     deletePerson(index) {
       this.foods.updateFoods(this.people[index])
       this.people.splice(index, 1)
       this.foods.clearFoodList(this.people.length)
     },
 
+    // Поиск элемента по id в people
     findPerson(id) {
       var person = NaN
 
