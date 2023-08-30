@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-table density="compact" class="border">
+    <v-table density="compact" class=" border rounded-lg pa-2">
       <thead>
         <tr>
           <th colspan="2" class="center">

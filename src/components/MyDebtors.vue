@@ -1,6 +1,6 @@
 <template>
-  <p v-for="(payer, payerId) in fillPayersArray()" :key="payer">
-    <v-table density="compact" class="border mb-10">
+  <div v-for="(payer, payerId) in fillPayersArray()" :key="payer">
+    <v-table v-if="checkDebtors(payer)" density="compact" class=" border rounded-lg pa-2 mb-10">
       <thead>
         <tr>
           <th colspan="2">
@@ -27,7 +27,7 @@
         </tr>
       </tbody>
     </v-table>
-  </p>
+  </div>
 </template>
 
 <script>
@@ -94,6 +94,18 @@ export default {
       }
 
       return this.payers
+    },
+
+    checkDebtors(payer) {
+      let hasDebtor = false;
+
+      for(let debtor in payer.debtors) {
+        if(payer.debtors[debtor] != 0) {
+          hasDebtor = true
+        }
+      }
+
+      return hasDebtor
     }
   }
 }
