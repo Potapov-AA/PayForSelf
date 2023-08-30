@@ -4,23 +4,27 @@
     :key="food.id"
     class="border rounded-lg pa-4 mb-10"
   >
-    <div class="d-flex justify-space-between mb-4">
-      <input
-        class="border rounded-lg mx-1 pa-2"
-        type="text"
-        v-model="food.name"
-        id=""
-        placeholder="Название продукта"
-      />
-      <input
-        class="border rounded-lg mx-1 pa-2"
-        type="number"
+    <div class="d-flex justify-space-between">
+      <v-text-field v-model="food.name" class="w-250" label="Название продукта" variant="outlined">
+      </v-text-field>
+
+      <v-text-field
         v-model="food.cost"
-        id=""
-        placeholder="Стоимость"
-      />
-      <v-btn icon variant="text" :key="food.id" @click="storeFoods.deleteFood(index)">
-        <v-icon size="25"> mdi-delete </v-icon>
+        class="w-250 ml-4"
+        label="Стоимость"
+        type="number"
+        variant="outlined"
+      >
+      </v-text-field>
+
+      <v-btn
+        class="ml-2 mt-1"
+        icon
+        variant="text"
+        :key="food.id"
+        @click="storeFoods.deleteFood(index)"
+      >
+        <v-icon size="30"> mdi-delete </v-icon>
       </v-btn>
     </div>
 
@@ -30,9 +34,11 @@
       :item-title="'name'"
       :item-value="'id'"
       variant="outlined"
+      label="Кто платит?"
     >
     </v-select>
 
+    <p class="text-h6 mb-1">Кто ел?</p>
     <div class="d-flex justify-center flex-wrap w-auto">
       <div class="border ma-1" v-for="person in storePeople.people" :key="person.id">
         <my-eater :person="person" :index="index"></my-eater>
@@ -60,4 +66,8 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.w-250 {
+  width: 250px;
+}
+</style>
