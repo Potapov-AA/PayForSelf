@@ -5,7 +5,7 @@
       :key="person.id"
       class="border rounded-lg pt-5 px-4 mb-4 w-200 d-flex justify-space-between"
     >
-      <v-text-field v-model="person.name" clearable label="Введите имя" variant="outlined">
+      <v-text-field v-model="person.name" label="Введите имя" variant="outlined">
       </v-text-field>
       <v-btn class="ml-2 mt-1" icon variant="text" :key="person.id" @click="storePeople.deletePerson(index)">
         <v-icon size="30"> mdi-delete </v-icon>
