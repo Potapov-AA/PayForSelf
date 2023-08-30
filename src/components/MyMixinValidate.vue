@@ -7,6 +7,7 @@ export default {
   },
 
   methods: {
+    // Проверка на условия показа сообщения-предупреждения
     showWarringMessage() {
       var showWarning = false
 
