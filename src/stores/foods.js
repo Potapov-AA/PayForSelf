@@ -17,7 +17,7 @@ export const useFoodsStore = defineStore(STORE_NAME, {
         name: '',
         cost: '',
         eaters: [],
-        payerId: 'Кто платит?',
+        payerId: '---',
       })
 
       this.uniquId++
@@ -47,7 +47,7 @@ export const useFoodsStore = defineStore(STORE_NAME, {
         this.foods.forEach(food => {
             food.eaters = food.eaters.filter((p) => p !== person)
             if (food.payerId == person.id) {
-              food.payerId = 'Кто платит?'
+              food.payerId = '---'
             }
         });
     },
