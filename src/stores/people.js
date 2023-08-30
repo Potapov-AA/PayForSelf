@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-import { useFoodsStore } from './foods'
+import { useFoodsStore } from '@/stores/foods'
 
 const STORE_NAME = 'people'
 

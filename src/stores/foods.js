@@ -1,13 +1,11 @@
 import { defineStore } from 'pinia'
-import { usePeopleStore } from './people'
 
 const STORE_NAME = 'foods'
 
 export const useFoodsStore = defineStore(STORE_NAME, {
   state: () => ({
     uniquId: 0,
-    foods: [],
-    people: usePeopleStore()
+    foods: []
   }),
 
   actions: {
