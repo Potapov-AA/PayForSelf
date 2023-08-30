@@ -33,17 +33,21 @@
     <div v-else-if="showStatistic">
       <my-statistic></my-statistic>
     </div>
-    <div v-else-if="showDebtor">DEBTOR</div>
+    <div v-else-if="showDebtor">
+      <my-debtors></my-debtors>
+    </div>
   </v-container>
 </template>
 
 <script>
 import { usePeopleStore } from '@/stores/people'
 import { useFoodsStore } from '@/stores/foods'
+
 import MyIconResult from '@/components/MyIconResult.vue'
 import MyTableResult from '@/components/MyTableResult.vue'
 import MyStatistic from '@/components/MyStatistic.vue'
 import MyWarring from '@/components/MyWarring.vue'
+import MyDebtors from '@/components/MyDebtors.vue'
 
 import MyMixinValidate from '@/components/MyMixinValidate.vue'
 
@@ -63,7 +67,8 @@ export default {
     'my-icon-result': MyIconResult,
     'my-table-result': MyTableResult,
     'my-statistic': MyStatistic,
-    'my-warring': MyWarring
+    'my-warring': MyWarring,
+    'my-debtors': MyDebtors
   },
   methods: {
     showTableComponent() {
@@ -96,15 +101,15 @@ export default {
           } else {
             this.storeFoods.foods.forEach((food) => {
               if (food.name == '' || food.cost == '' || food.payerId == '---') {
-                this.warringMessage = 'Для отображения результатов необходимо заполнить все поля у каждого блюда.'
+                this.warringMessage =
+                  'Для отображения результатов необходимо заполнить все поля у каждого блюда.'
                 show = true
               } else if (isNaN(Number(food.cost)) || food.cost <= 0) {
                 this.warringMessage =
                   'Проверьте поле стоимости блюда, возможно где-то введено некорретное число.'
                 show = true
               } else if (food.eaters.length == 0) {
-                this.warringMessage =
-                  'Проверьте, что у каждого блюда выбраны те, кто его ел.'
+                this.warringMessage = 'Проверьте, что у каждого блюда выбраны те, кто его ел.'
                 show = true
               }
             })
