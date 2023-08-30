@@ -20,7 +20,7 @@
 import { usePeopleStore } from '@/stores/people'
 
 import MyPersonList from '@/components/MyPersonList.vue'
-import MyAddFirstItemBtn from '../components/MyAddFirstItemBtn.vue'
+import MyAddFirstItemBtn from '@/components/MyAddFirstItemBtn.vue'
 
 export default {
   data() {
