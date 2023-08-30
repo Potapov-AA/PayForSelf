@@ -1,4 +1,4 @@
-# payforself
+# vue-vite-split-the-bill
 
 Приложение для разделения счета в кафе.
 
