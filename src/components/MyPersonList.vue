@@ -1,13 +1,14 @@
 <template>
-  <transition-group name="list" tag="div">
+  <transition-group name="list">
     <div
       v-for="(person, index) in storePeople.people"
       :key="person.id"
-      class="border rounded-lg pa-4 mb-2"
+      class="border rounded-lg pt-5 px-4 mb-4 w-200 d-flex justify-space-between"
     >
-      <input type="text" v-model="person.name" id="" placeholder="Введите имя" class="border rounded-lg pa-2 mr-3"/>
-      <v-btn icon variant="text" :key="person.id" @click="storePeople.deletePerson(index)">
-        <v-icon> mdi-delete </v-icon>
+      <v-text-field v-model="person.name" clearable label="Введите имя" variant="outlined">
+      </v-text-field>
+      <v-btn class="ml-2 mt-1" icon variant="text" :key="person.id" @click="storePeople.deletePerson(index)">
+        <v-icon size="30"> mdi-delete </v-icon>
       </v-btn>
     </div>
   </transition-group>
@@ -33,5 +34,9 @@ export default {
 .list-leave-to {
   opacity: 0;
   transform: translateX(30px);
+}
+
+.w-200 {
+  width: 300px;
 }
 </style>
