@@ -3,7 +3,7 @@
     v-if="checkFoodListFields()"
     class="d-flex flex-column align-center justify-center h-100"
   >
-    <my-warring :warringText="warringMessage"></my-warring>
+    <my-warning :warningText="warningMessage" />
   </v-container>
   <v-container v-else>
     <div class="d-flex justify-space-evenly my-5">
@@ -12,29 +12,29 @@
         :tooltipText="'Таблички по продуктам'"
         :icon="'mdi-table'"
         :isActive="showTable"
-      ></my-icon-result>
+      />
       <my-icon-result
         @show="showStaticticComponent"
         :tooltipText="'Статистика'"
         :icon="'mdi-form-select'"
         :isActive="showStatistic"
-      ></my-icon-result>
+      />
       <my-icon-result
         @show="showDebtorComponent"
         :tooltipText="'Кто кому сколько должен'"
         :icon="'mdi-cash'"
         :isActive="showDebtor"
-      ></my-icon-result>
+      />
     </div>
 
     <div v-if="showTable">
-      <my-table-result></my-table-result>
+      <my-table-result />
     </div>
     <div v-else-if="showStatistic">
-      <my-statistic></my-statistic>
+      <my-statistic />
     </div>
     <div v-else-if="showDebtor">
-      <my-debtors></my-debtors>
+      <my-debtors />
     </div>
   </v-container>
 </template>
@@ -46,7 +46,7 @@ import { useFoodsStore } from '@/stores/foods'
 import MyIconResult from '@/components/MyIconResult.vue'
 import MyTableResult from '@/components/MyTableResult.vue'
 import MyStatistic from '@/components/MyStatistic.vue'
-import MyWarring from '@/components/MyWarring.vue'
+import MyWarning from '@/components/MyWarning.vue'
 import MyDebtors from '@/components/MyDebtors.vue'
 
 import MyMixinValidate from '@/components/MyMixinValidate.vue'
@@ -60,14 +60,14 @@ export default {
       showTable: true,
       showStatistic: false,
       showDebtor: false,
-      warringMessage: ''
+      warningMessage: ''
     }
   },
   components: {
     'my-icon-result': MyIconResult,
     'my-table-result': MyTableResult,
     'my-statistic': MyStatistic,
-    'my-warring': MyWarring,
+    'my-warning': MyWarning,
     'my-debtors': MyDebtors
   },
   methods: {
@@ -90,29 +90,29 @@ export default {
 
     // Проверка на корректное заполнение полей добавления еды
     checkFoodListFields() {
-      var show = false
+      let show = false
 
-      if (this.showWarringMessage()) {
-        this.warringMessage = this.warringText
+      if (this.isShowMessage()) {
+        this.warningMessage = this.warningText
         show = true
       } else {
-        if (this.warringText == '') {
+        if (this.warningText === '') {
           if (this.storeFoods.foods.length == 0) {
-            this.warringMessage =
+            this.warningMessage =
               'Для отображения результатов необходимо добавить блюда и заполнить все поля.'
             show = true
           } else {
             this.storeFoods.foods.forEach((food) => {
-              if (food.name == '' || food.cost == '' || food.payerId == '---') {
-                this.warringMessage =
+              if (food.name === '' || food.cost === '' || food.payerId === '---') {
+                this.warningMessage =
                   'Для отображения результатов необходимо заполнить все поля у каждого блюда.'
                 show = true
               } else if (isNaN(Number(food.cost)) || food.cost <= 0) {
-                this.warringMessage =
+                this.warningMessage =
                   'Проверьте поле стоимости блюда, возможно где-то введено некорретное число.'
                 show = true
-              } else if (food.eaters.length == 0) {
-                this.warringMessage = 'Проверьте, что у каждого блюда выбраны те, кто его ел.'
+              } else if (food.eaters.length === 0) {
+                this.warningMessage = 'Проверьте, что у каждого блюда выбраны те, кто его ел.'
                 show = true
               }
             })
@@ -125,5 +125,3 @@ export default {
   }
 }
 </script>
-
-<style></style>
