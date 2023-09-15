@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-table density="compact" class=" border rounded-lg pa-2">
+    <v-table density="compact" class="border rounded-lg pa-2">
       <thead>
         <tr>
           <th colspan="2" class="center">
@@ -21,12 +21,12 @@
     </v-table>
 
     <div class="mt-10">
-      <strong v-if="maxSum().length == 1">Самый богатый едок:</strong>
+      <strong v-if="maxSum().length === 1">Самый богатый едок:</strong>
       <strong v-else>Самые богатые едоки:</strong> {{ maxSum().join('; ') }}.
     </div>
 
     <div class="mt-10">
-      <strong v-if="maxEat().length == 1">Главный любитель поесть:</strong>
+      <strong v-if="maxEat().length === 1">Главный любитель поесть:</strong>
       <strong v-else>Главные любители поесть:</strong> {{ maxEat().join('; ') }}.
     </div>
   </div>
@@ -46,11 +46,11 @@ export default {
   methods: {
     // Расчет финальной суммы для каждой персоны и каждого продукта
     calculateFinalSum() {
-      const finalResult = {}
+      let finalResult = {}
 
       this.storePeople.people.forEach((person) => {
         this.storeFoods.foods.forEach((food) => {
-          if (food.eaters.indexOf(person) != -1) {
+          if (food.eaters.indexOf(person) !== -1) {
             if (person.id in finalResult) {
               finalResult[person.id].sum += Math.floor(food.cost / food.eaters.length)
             } else {
@@ -68,8 +68,8 @@ export default {
 
     // Поиск того, кто потратил больше всех
     maxSum() {
-      var richEater = []
-      var max = 0
+      let richEater = []
+      let max = 0
 
       const keys = Object.keys(this.calculateFinalSum())
       const finalSums = this.calculateFinalSum()
@@ -79,7 +79,7 @@ export default {
           richEater = []
           richEater.push(finalSums[key].name)
           max = finalSums[key].sum
-        } else if (finalSums[key].sum == max) {
+        } else if (finalSums[key].sum === max) {
           richEater.push(finalSums[key].name)
         }
       })
@@ -89,14 +89,14 @@ export default {
 
     // Поиск того, кто съел больше всех
     maxEat() {
-      var maxEaters = []
-      var max = 0
+      let maxEaters = []
+      let max = 0
 
-      const finalResult = {}
+      let finalResult = {}
 
       this.storePeople.people.forEach((person) => {
         this.storeFoods.foods.forEach((food) => {
-          if (food.eaters.indexOf(person) != -1) {
+          if (food.eaters.indexOf(person) !== -1) {
             if (person.id in finalResult) {
               finalResult[person.id].sum += 1
             } else {
@@ -116,7 +116,7 @@ export default {
           maxEaters = []
           maxEaters.push(finalResult[key].name)
           max = finalResult[key].sum
-        } else if (finalResult[key].sum == max) {
+        } else if (finalResult[key].sum === max) {
           maxEaters.push(finalResult[key].name)
         }
       })
@@ -126,6 +126,3 @@ export default {
   }
 }
 </script>
-
-<style>
-</style>
