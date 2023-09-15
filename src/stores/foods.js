@@ -29,7 +29,7 @@ export const useFoodsStore = defineStore(STORE_NAME, {
 
     // Добавление или удаление person из списка eater, в зависимости от его наличия
     changeEater(person, index) {
-      if (this.foods[index].eaters.indexOf(person) == -1) {
+      if (this.foods[index].eaters.indexOf(person) === -1) {
         this.foods[index].eaters.push(person)
       } else {
         this.foods[index].eaters = this.foods[index].eaters.filter((p) => p !== person)
@@ -37,19 +37,15 @@ export const useFoodsStore = defineStore(STORE_NAME, {
     },
 
     // Возвращает статус нахождения person в списке eaters
-    checkEaterStatus(person, index) {
-      if (this.foods[index].eaters.indexOf(person) == -1) {
-        return false
-      } else {
-        return true
-      }
+    isPersonInEaters(person, index) {
+      return this.foods[index].eaters.indexOf(person) !== -1
     },
 
     // Убирает из списка eaters, переданный person
-    updateFoods(person) {
+    deletePerson(person) {
       this.foods.forEach((food) => {
         food.eaters = food.eaters.filter((p) => p !== person)
-        if (food.payerId == person.id) {
+        if (food.payerId === person.id) {
           food.payerId = '---'
         }
       })
@@ -57,8 +53,8 @@ export const useFoodsStore = defineStore(STORE_NAME, {
 
     // Очишает список продуктов, если все person удалены
     clearFoodList(peopleCount) {
-      if (this.foods.length != 0) {
-        if (this.foods[0].eaters.length == 0 && peopleCount == 0) {
+      if (this.foods.length !== 0) {
+        if (this.foods[0].eaters.length === 0 && peopleCount === 0) {
           this.foods = []
         }
       }
