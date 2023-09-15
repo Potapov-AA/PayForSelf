@@ -24,14 +24,14 @@ export const usePeopleStore = defineStore(STORE_NAME, {
 
     // Удаление элемента из people
     deletePerson(index) {
-      this.foods.updateFoods(this.people[index])
+      this.foods.deletePerson(this.people[index])
       this.people.splice(index, 1)
       this.foods.clearFoodList(this.people.length)
     },
 
     // Поиск элемента по id в people
     findPerson(id) {
-      var person = NaN
+      let person = NaN
 
       this.people.forEach(p => {
         if (p.id == id) person = p
