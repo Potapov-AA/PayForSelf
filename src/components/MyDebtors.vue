@@ -1,10 +1,12 @@
 <template>
   <div v-for="(payer, payerId) in fillPayersArray" :key="payer">
-    <v-table v-if="checkZeroDebtors(payer)" density="compact" class=" border rounded-lg pa-2 mb-10">
+    <v-table v-if="checkZeroDebtors(payer)" density="compact" class="border rounded-lg pa-2 mb-10">
       <thead>
         <tr>
           <th colspan="2">
-            <strong class="text-uppercase text-h6">{{ storePeople.findPerson(payerId).name }} должны</strong>
+            <strong class="text-uppercase text-h6">
+              {{ storePeople.findPerson(payerId).name }} должны
+            </strong>
           </th>
         </tr>
         <tr>
@@ -44,8 +46,8 @@ export default {
   },
   computed: {
     // Заполняет массив платильщиков-должников
-    fillPayersArray: function() {
-      var payersArray = []
+    fillPayersArray: function () {
+      let payersArray = []
       this.storeFoods.foods.forEach((food) => {
         if (!(food.payerId in payersArray)) {
           payersArray.push(food.payerId)
@@ -77,10 +79,10 @@ export default {
       })
 
       // перерасчет сумм должников, для случаев раздельного счета
-      for(var k1 in this.payers) {
-        for(var k2 in this.payers) {
-          if(k1 != k2) {
-            if(k1 in this.payers[k2].debtors && k2 in this.payers[k1].debtors) {
+      for (var k1 in this.payers) {
+        for (var k2 in this.payers) {
+          if (k1 != k2) {
+            if (k1 in this.payers[k2].debtors && k2 in this.payers[k1].debtors) {
               if (this.payers[k2].debtors[k1] == this.payers[k1].debtors[k2]) {
                 this.payers[k2].debtors[k1] = 0
                 this.payers[k1].debtors[k2] = 0
@@ -94,7 +96,6 @@ export default {
             }
           }
         }
-        
       }
 
       return this.payers
@@ -103,10 +104,10 @@ export default {
   methods: {
     // Проверка на наличие должников с нудевой суммой
     checkZeroDebtors(payer) {
-      let hasDebtor = false;
+      let hasDebtor = false
 
-      for(let debtor in payer.debtors) {
-        if(payer.debtors[debtor] != 0) {
+      for (let debtor in payer.debtors) {
+        if (payer.debtors[debtor] != 0) {
           hasDebtor = true
         }
       }
@@ -116,5 +117,3 @@ export default {
   }
 }
 </script>
-
-<style></style>
