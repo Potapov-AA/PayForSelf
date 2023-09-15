@@ -7,7 +7,13 @@
     >
       <v-text-field class="w-300" v-model="person.name" label="Введите имя" variant="outlined">
       </v-text-field>
-      <v-btn class="ml-2 mt-1" icon variant="text" :key="person.id" @click="storePeople.deletePerson(index)">
+      <v-btn
+        class="ml-2 mt-1"
+        icon
+        variant="text"
+        :key="person.id"
+        @click="storePeople.deletePerson(index)"
+      >
         <v-icon size="30"> mdi-delete </v-icon>
       </v-btn>
     </div>
@@ -25,5 +31,3 @@ export default {
   }
 }
 </script>
-
-<style></style>
