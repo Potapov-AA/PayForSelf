@@ -4,14 +4,14 @@
       v-if="storePeople.people.length == 0"
       class="d-flex flex-column align-center justify-center h-100"
     >
-      <my-add-first-item-btn :addItemFunction="storePeople.addPerson"></my-add-first-item-btn>
+      <my-add-first-item-btn :addItemFunction="storePeople.addPerson" />
     </v-container>
     <v-container v-else class="d-flex flex-column justify-center align-center">
       <v-btn @click="storePeople.addPerson()" class="my-5">
         <v-icon size="30">mdi-account-plus</v-icon>
       </v-btn>
 
-      <my-person-list></my-person-list>
+      <my-person-list />
     </v-container>
   </transition>
 </template>
@@ -34,5 +34,3 @@ export default {
   }
 }
 </script>
-
-<style></style>
