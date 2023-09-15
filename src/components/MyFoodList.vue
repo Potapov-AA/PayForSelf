@@ -41,7 +41,7 @@
     <p class="text-h6 mb-1">Кто ел?</p>
     <div class="d-flex justify-center flex-wrap w-auto">
       <div class="border ma-1" v-for="person in storePeople.people" :key="person.id">
-        <my-eater :person="person" :index="index"></my-eater>
+        <my-eater :person="person" :index="index" />
       </div>
     </div>
   </div>
@@ -65,5 +65,3 @@ export default {
   }
 }
 </script>
-
-<style></style>
