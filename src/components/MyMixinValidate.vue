@@ -2,34 +2,32 @@
 export default {
   data() {
     return {
-      warringText: ''
+      warningText: ''
     }
   },
 
   methods: {
     // Проверка на условия показа сообщения-предупреждения
-    showWarringMessage() {
-      var showWarning = false
+    isShowMessage() {
+      let isShowMessage = false
 
       if (this.storePeople.people.length == 0) {
-        showWarning = true
-        this.warringText = 'Прежде чем начать, пожалуйста добавьте людей.'
+        isShowMessage = true
+        this.warningText = 'Прежде чем начать, пожалуйста добавьте людей.'
       } else if (this.storePeople.people.length == 1) {
-        showWarning = true
-        this.warringText = 'Проверьте, что добавлено больше одного человека.'
+        isShowMessage = true
+        this.warningText = 'Проверьте, что добавлено больше одного человека.'
       } else {
         this.storePeople.people.forEach((person) => {
           if (person.name === '') {
-            showWarning = true
-            this.warringText = 'Проверьте, что всем добавленым людям записаны имена.'
+            isShowMessage = true
+            this.warningText = 'Проверьте, что всем добавленым людям записаны имена.'
           }
         })
       }
 
-      return showWarning
+      return isShowMessage
     }
   }
 }
 </script>
-
-<style></style>
