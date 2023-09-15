@@ -13,8 +13,8 @@
           :iconName="'mdi-numeric-1'"
           :tooltipText="'Добавь тех, кто ел'"
           :size="40"
-          :link="''"
-        ></my-header-item>
+          :name="'people'"
+        />
       </div>
       <div>
         <v-icon :size="45">mdi-arrow-right</v-icon>
@@ -24,8 +24,8 @@
           :iconName="'mdi-numeric-2'"
           :tooltipText="'Добавь то, что ели'"
           :size="40"
-          :link="'foods'"
-        ></my-header-item>
+          :name="'foods'"
+        />
       </div>
       <div>
         <v-icon :size="45">mdi-arrow-right</v-icon>
@@ -35,8 +35,8 @@
           :iconName="'mdi-numeric-3'"
           :tooltipText="'Посмотри, кто сколько наел'"
           :size="40"
-          :link="'results'"
-        ></my-header-item>
+          :name="'results'"
+        />
       </div>
     </v-row>
   </header>
@@ -51,5 +51,3 @@ export default {
   }
 }
 </script>
-
-<style></style>

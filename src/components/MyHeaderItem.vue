@@ -1,7 +1,7 @@
 <template>
   <v-tooltip location="bottom" :text="tooltipText">
-    <template v-slot:activator="{ props }">
-      <router-link :to="'/' + link" class="link" active-class="active">
+    <template #activator="{ props }">
+      <router-link :to="{name: name}" class="link" active-class="active">
         <v-btn variant="outlined" icon v-bind="props" value="nearby">
           <v-icon :size="size">{{ iconName }}</v-icon>
         </v-btn>
@@ -16,7 +16,7 @@ export default {
     iconName: String,
     tooltipText: String,
     size: Number,
-    link: String
+    name: String
   }
 }
 </script>
