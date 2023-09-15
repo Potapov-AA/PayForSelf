@@ -28,7 +28,7 @@ export default {
     index: Number
   },
   mounted() {
-    this.isEater = this.storeFoods.checkEaterStatus(this.person, this.index)
+    this.isEater = this.storeFoods.isPersonInEaters(this.person, this.index)
   }
 }
 </script>
