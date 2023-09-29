@@ -19,7 +19,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(debtor, debtorId) in payer.debtors" :key="debtor">
+        <tr v-for="(debtor, debtorId) in payer.debtors" :key="debtorId">
           <th v-if="debtor != 0" class="center">
             {{ storePeople.findPerson(debtorId).name }}
           </th>
@@ -79,19 +79,19 @@ export default {
       })
 
       // перерасчет сумм должников, для случаев раздельного счета
-      for (var k1 in this.payers) {
-        for (var k2 in this.payers) {
-          if (k1 != k2) {
-            if (k1 in this.payers[k2].debtors && k2 in this.payers[k1].debtors) {
-              if (this.payers[k2].debtors[k1] == this.payers[k1].debtors[k2]) {
-                this.payers[k2].debtors[k1] = 0
-                this.payers[k1].debtors[k2] = 0
-              } else if (this.payers[k2].debtors[k1] > this.payers[k1].debtors[k2]) {
-                this.payers[k2].debtors[k1] -= this.payers[k1].debtors[k2]
-                this.payers[k1].debtors[k2] = 0
+      for (let debtorCurrentPerson in this.payers) {
+        for (let debtorComparablePerson in this.payers) {
+          if (debtorCurrentPerson != debtorComparablePerson) {
+            if (debtorCurrentPerson in this.payers[debtorComparablePerson].debtors && debtorComparablePerson in this.payers[debtorCurrentPerson].debtors) {
+              if (this.payers[debtorComparablePerson].debtors[debtorCurrentPerson] == this.payers[debtorCurrentPerson].debtors[debtorComparablePerson]) {
+                this.payers[debtorComparablePerson].debtors[debtorCurrentPerson] = 0
+                this.payers[debtorCurrentPerson].debtors[debtorComparablePerson] = 0
+              } else if (this.payers[debtorComparablePerson].debtors[debtorCurrentPerson] > this.payers[debtorCurrentPerson].debtors[debtorComparablePerson]) {
+                this.payers[debtorComparablePerson].debtors[debtorCurrentPerson] -= this.payers[debtorCurrentPerson].debtors[debtorComparablePerson]
+                this.payers[debtorCurrentPerson].debtors[debtorComparablePerson] = 0
               } else {
-                this.payers[k1].debtors[k2] -= this.payers[k2].debtors[k1]
-                this.payers[k2].debtors[k1] = 0
+                this.payers[debtorCurrentPerson].debtors[debtorComparablePerson] -= this.payers[debtorComparablePerson].debtors[debtorCurrentPerson]
+                this.payers[debtorComparablePerson].debtors[debtorCurrentPerson] = 0
               }
             }
           }
