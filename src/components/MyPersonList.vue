@@ -5,8 +5,12 @@
       :key="person.id"
       class="border rounded-lg pt-5 px-4 mb-4 d-flex justify-space-between"
     >
-      <v-text-field class="w-300" v-model="person.name" label="Введите имя" variant="outlined">
-      </v-text-field>
+      <v-text-field 
+        class="w-300" 
+        v-model="person.name" 
+        label="Введите имя" 
+        variant="outlined" 
+      />
       <v-btn
         class="ml-2 mt-1"
         icon
