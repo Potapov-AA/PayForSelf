@@ -33,3 +33,10 @@ npm run dev
 ```sh
 npm run build
 ```
+
+### Запуск в Docker
+
+```docker
+docker build -t name_your_image .
+docker run -it -p 8080:8080 --rm --name name_your_container name_your_image
+```
